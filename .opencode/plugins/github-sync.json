@@ -1,0 +1,12 @@
+{
+  "name": "github-sync",
+  "description": "Sincroniza cambios con GitHub",
+  "version": "1.0.0",
+  "scripts": {
+    "pre-push": "echo 'Verificando cambios antes de push...'",
+    "post-commit": "echo 'Commit completado'"
+  },
+  "requires": {
+    "gh": "GitHub CLI"
+  }
+}
