@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  Electo:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - LOG_LEVEL=info
+      - USERS=admin:onpe2026
+    restart: unless-stopped
