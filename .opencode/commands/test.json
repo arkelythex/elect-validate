@@ -1,0 +1,8 @@
+{
+  "name": "test",
+  "description": "Ejecuta tests del proyecto",
+  "command": "go test ./...",
+  "permissions": "manual",
+  "workingDirectory": ".",
+  "output": "console"
+}

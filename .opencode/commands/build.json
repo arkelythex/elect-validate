@@ -1,0 +1,11 @@
+{
+  "name": "build",
+  "description": "Compila el proyecto Go a binario",
+  "command": "go build -o elect.exe ./cmd/elect/main.go",
+  "permissions": "manual",
+  "workingDirectory": ".",
+  "output": "console",
+  "env": {
+    "CGO_ENABLED": "0"
+  }
+}

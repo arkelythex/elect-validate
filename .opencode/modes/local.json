@@ -1,0 +1,20 @@
+{
+  "name": "local",
+  "description": "Modo desarrollo local",
+  "environment": {
+    "MODE": "development",
+    "PORT": "8080",
+    "LOG_LEVEL": "debug"
+  },
+  "agents": {
+    "default": "agents/default.json"
+  },
+  "server": {
+    "autoStart": false,
+    "command": "./elect.exe"
+  },
+  "permissions": {
+    "autoExecute": false,
+    "gitOperations": false
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "validate",
+  "description": "Ejecuta validación de actas electorales",
+  "command": "go run cmd/elect/main.go test.csv",
+  "permissions": "manual",
+  "workingDirectory": ".",
+  "output": "console"
+}
