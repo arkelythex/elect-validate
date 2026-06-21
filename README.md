@@ -1,5 +1,8 @@
 # Electo Suite Electoral
 
+> **🏢 ARKELYTHEX Ecosystem** — This project is part of the [ARKELYTHEX](https://github.com/arkelythex) venture studio.  
+> The primary development hub is the [ARKELYTHEX monorepo](https://github.com/arkelythex/Arkelythex).
+
 Sistema de validación de actas electorales para la ONPE (Perú). Desarrollado en Go con arquitectura modular, validación concurrente y UI web moderna.
 
 ## Características
@@ -199,11 +202,12 @@ v := validator.New(
 Uso interno - ONPE
 ---
 
-## 🌐 ARKELYTEX Ecosystem
+## 🌐 ARKELYTHEX
 
-| Project | Description |
-|---------|-------------|
-| [Dreamcoder08](https://github.com/Dreamcoder08) | Founder — Software Architect · GDE · Microsoft MVP |
-| [ARKELYTEX](https://github.com/arkelythex) | Engineering resilient systems for Latin America |
-
-Built by [Dreamcoder08](https://github.com/Dreamcoder08) — Software Architect, GDE, Microsoft MVP.
+| Component | Description |
+|-----------|-------------|
+| [ARKELYTHEX Monorepo](https://github.com/arkelythex/Arkelythex) | Primary development hub — fiscal intelligence platform |
+| [Digital Public Peru](https://github.com/arkelythex/Digital_Public_peru) | Civic tech for fiscal transparency |
+| [elect-validate](https://github.com/arkelythex/elect-validate) | Electoral act validation suite |
+| [EdgeTraz-Agro](https://github.com/arkelythex/EdgeTraz-Agro) | Agro-industrial traceability |
+| [Founder](https://github.com/Dreamcoder08) | Dreamcoder08 — Software Architect · GDE · MVP |
