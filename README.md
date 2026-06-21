@@ -210,4 +210,4 @@ Uso interno - ONPE
 | [Digital Public Peru](https://github.com/arkelythex/Digital_Public_peru) | Civic tech for fiscal transparency |
 | [elect-validate](https://github.com/arkelythex/elect-validate) | Electoral act validation suite |
 | [EdgeTraz-Agro](https://github.com/arkelythex/EdgeTraz-Agro) | Agro-industrial traceability |
-| [Founder](https://github.com/Dreamcoder08) | Dreamcoder08 — Software Architect · GDE · MVP |
+| [Founder](https://github.com/Dreamcoder08) | Dreamcoder08 — Software Architect · GDE |
