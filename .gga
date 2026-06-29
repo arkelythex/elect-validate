@@ -1,0 +1,29 @@
+# Gentleman Guardian Angel Configuration — elect-validate
+# DeepSeek V4 Flash via direct API
+
+# AI Provider
+PROVIDER="deepseek:deepseek-chat"
+
+# Rules file (this repo)
+RULES_FILE="AGENTS.md"
+
+# Summary max length
+SUMMARY_MAX_LEN=500
+
+# Output format
+OUTPUT_FORMAT="markdown"
+
+# File patterns to include in review
+FILE_PATTERNS="*.go,*.js,*.ts,*.html,*.css,*.json,*.yaml,*.yml,*.md,Dockerfile,.gitignore"
+
+# File patterns to exclude
+EXCLUDE_PATTERNS="node_modules/*,dist/*,*.exe"
+
+# Strict mode: fail if AI response is ambiguous
+STRICT_MODE=true
+
+# Timeout: 2 minutes
+TIMEOUT_SEC=120
+
+# Base branch for --pr-mode
+PR_BASE_BRANCH="main"
