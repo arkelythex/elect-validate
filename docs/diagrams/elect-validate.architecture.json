@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Electo Suite Electoral — Validation Pipeline",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/arkelythex/elect-validate",
+      "provider": "github",
+      "revision": "1be3ddf3ddbd1198cfa302a602075ec8d297ca5d"
+    }
+  },
+  "components": [
+    {
+      "id": "web",
+      "type": "frontend",
+      "label": "Web UI",
+      "sublabel": "drag & drop",
+      "sources": [
+        { "path": "web/js/services/api.js", "label": "API client" }
+      ],
+      "pos": [40, 40],
+      "size": [150, 110]
+    },
+    {
+      "id": "server",
+      "type": "backend",
+      "label": "HTTP Server",
+      "sublabel": "routes",
+      "sources": [
+        { "path": "internal/server/server.go", "line": 25, "label": "Run()" },
+        { "path": "internal/server/server.go", "line": 38, "label": "/api/validate route" }
+      ],
+      "pos": [215, 40],
+      "size": [150, 110]
+    },
+    {
+      "id": "handler",
+      "type": "backend",
+      "label": "Handlers",
+      "sublabel": "validate, login, WS",
+      "sources": [
+        { "path": "internal/handler/validate.go", "line": 164, "label": "HandleValidate()" },
+        { "path": "internal/handler/validate.go", "line": 73, "label": "HandleValidateWS()" }
+      ],
+      "pos": [390, 40],
+      "size": [150, 110]
+    },
+    {
+      "id": "parser",
+      "type": "backend",
+      "label": "CSV Parser",
+      "sublabel": "column detection",
+      "sources": [
+        { "path": "internal/parser/csv.go", "line": 28, "label": "ParseFile()" },
+        { "path": "internal/parser/csv.go", "line": 108, "label": "normalizeHeaders()" }
+      ],
+      "pos": [565, 40],
+      "size": [150, 110]
+    },
+    {
+      "id": "validator",
+      "type": "backend",
+      "label": "Validator",
+      "sublabel": "concurrent workers",
+      "sources": [
+        { "path": "internal/validator/logic.go", "line": 30, "label": "Validar()" },
+        { "path": "internal/validator/logic.go", "line": 88, "label": "worker()" }
+      ],
+      "pos": [740, 40],
+      "size": [150, 110]
+    },
+    {
+      "id": "model",
+      "type": "database",
+      "label": "Model",
+      "sublabel": "Acta, results",
+      "sources": [
+        { "path": "internal/model/acta.go", "line": 3, "label": "type Acta" },
+        { "path": "internal/model/acta.go", "line": 28, "label": "type ResultadoValidacion" }
+      ],
+      "pos": [915, 40],
+      "size": [150, 110]
+    },
+    {
+      "id": "auth",
+      "type": "security",
+      "label": "Auth",
+      "sublabel": "JWT",
+      "sources": [
+        { "path": "internal/auth/auth.go", "line": 54, "label": "ValidateUser()" },
+        { "path": "internal/auth/auth.go", "line": 62, "label": "GenerateToken()" }
+      ],
+      "pos": [215, 190],
+      "size": [150, 90]
+    }
+  ],
+  "connections": [
+    { "from": "web", "to": "server", "label": "HTTP", "labelAt": [203, 36] },
+    { "from": "server", "to": "handler", "label": "routes", "labelAt": [378, 36] },
+    { "from": "server", "to": "auth", "label": "login", "labelAt": [290, 164] },
+    { "from": "handler", "to": "parser", "label": "ParseFile()", "labelAt": [553, 36] },
+    { "from": "parser", "to": "validator", "label": "[]Acta", "labelAt": [728, 36] },
+    { "from": "validator", "to": "model", "label": "results", "labelAt": [903, 36] }
+  ]
+}

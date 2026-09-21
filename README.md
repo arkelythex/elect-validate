@@ -14,6 +14,11 @@ Sistema de validación de actas electorales para la ONPE (Perú). Desarrollado e
 - **Modo CLI** para procesamiento por lotes
 - **API REST** para integración
 
+## Architecture
+
+![Electo Suite Electoral architecture](docs/diagrams/elect-validate.architecture.light.svg#gh-light-mode-only)
+![Electo Suite Electoral architecture](docs/diagrams/elect-validate.architecture.dark.svg#gh-dark-mode-only)
+
 ## Estructura del Proyecto
 
 ```
