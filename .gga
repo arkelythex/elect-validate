@@ -2,7 +2,7 @@
 # DeepSeek V4 Flash via direct API
 
 # AI Provider
-PROVIDER="deepseek:deepseek-chat"
+PROVIDER="codex"
 
 # Rules file (this repo)
 RULES_FILE="AGENTS.md"
