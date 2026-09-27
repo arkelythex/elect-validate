@@ -1,0 +1,34 @@
+schema: spec-driven
+
+strict_tdd: true
+
+context: |
+  Stack: Go 1.21 module (elect-validate).
+  Architecture: Standard Go module layout.
+  Testing: Go standard testing (go test).
+  Style: gofmt, go vet.
+
+rules:
+  proposal:
+    - Include rollback plan for risky changes
+  specs:
+    - Use Given/When/Then format for scenarios
+  design:
+    - Document architecture decisions with rationale
+  tasks:
+    - Keep tasks completable in one session
+  apply:
+    - Follow existing code patterns
+  verify:
+    test_command: 'go test ./...'
+    build_command: 'go build ./...'
+    coverage_threshold: 0
+  archive:
+    - Warn before merging destructive deltas
+
+testing:
+  strict_tdd: true
+  detected: '2026-07-30'
+  runner:
+    command: 'go test ./...'
+    framework: 'Go standard testing'
