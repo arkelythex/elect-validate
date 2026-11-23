@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Elect-Validate — ONPE Electoral Act Validation Suite",
+    "output": "docs/diagrams/elect-validate.architecture.html",
+    "quality_profile": "showcase",
+    "locale": "en",
+    "repository": {
+      "url": "https://github.com/arkelythex/elect-validate",
+      "revision": "1be3ddf3ddbd1198cfa302a602075ec8d297ca5d"
+    }
+  },
+  "components": [
+    {
+      "id": "web",
+      "type": "frontend",
+      "label": "Web UI & CLI",
+      "sublabel": "web/ · cmd/elect",
+      "pos": [
+        40,
+        210
+      ],
+      "size": [
+        150,
+        62
+      ],
+      "sources": [
+        {
+          "path": "web/index.html"
+        },
+        {
+          "path": "cmd/elect/main.go"
+        }
+      ]
+    },
+    {
+      "id": "server",
+      "type": "backend",
+      "label": "HTTP Server & Handlers",
+      "sublabel": "internal/server · handler",
+      "pos": [
+        280,
+        210
+      ],
+      "size": [
+        175,
+        62
+      ],
+      "sources": [
+        {
+          "path": "internal/server/server.go"
+        },
+        {
+          "path": "internal/handler/validate.go"
+        }
+      ]
+    },
+    {
+      "id": "parser",
+      "type": "backend",
+      "label": "CSV Act Parser",
+      "sublabel": "internal/parser · model",
+      "pos": [
+        545,
+        210
+      ],
+      "size": [
+        165,
+        62
+      ],
+      "sources": [
+        {
+          "path": "internal/parser/csv.go"
+        },
+        {
+          "path": "internal/model/acta.go"
+        }
+      ]
+    },
+    {
+      "id": "validator",
+      "type": "backend",
+      "label": "Concurrent Validator",
+      "sublabel": "Go worker pool",
+      "pos": [
+        800,
+        210
+      ],
+      "size": [
+        175,
+        62
+      ],
+      "sources": [
+        {
+          "path": "internal/validator/logic.go"
+        }
+      ]
+    },
+    {
+      "id": "auth",
+      "type": "security",
+      "label": "Auth Middleware",
+      "sublabel": "internal/auth",
+      "pos": [
+        280,
+        60
+      ],
+      "size": [
+        175,
+        60
+      ],
+      "sources": [
+        {
+          "path": "internal/auth/auth.go"
+        }
+      ]
+    },
+    {
+      "id": "logger",
+      "type": "database",
+      "label": "Audit Logger",
+      "sublabel": "internal/logger",
+      "pos": [
+        545,
+        360
+      ],
+      "size": [
+        165,
+        60
+      ],
+      "sources": [
+        {
+          "path": "internal/logger/logger.go"
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Go Validation Service (Dockerized)",
+      "wraps": [
+        "server",
+        "parser",
+        "validator",
+        "auth",
+        "logger"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "web-server",
+      "from": "web",
+      "to": "server",
+      "label": "upload acts",
+      "variant": "emphasis"
+    },
+    {
+      "id": "auth-server",
+      "from": "auth",
+      "to": "server",
+      "label": "guard",
+      "variant": "security",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "server-parser",
+      "from": "server",
+      "to": "parser",
+      "label": "decode CSV",
+      "variant": "emphasis"
+    },
+    {
+      "id": "parser-validator",
+      "from": "parser",
+      "to": "validator",
+      "label": "goroutines",
+      "variant": "emphasis"
+    },
+    {
+      "id": "parser-logger",
+      "from": "parser",
+      "to": "logger",
+      "label": "audit log",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Go Concurrency",
+      "items": [
+        "Validates ONPE electoral act batches concurrently via internal/validator",
+        "Accessible both as a CLI binary (cmd/elect) and web dashboard (web/)"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Clean Internal Packages",
+      "items": [
+        "Strict separation across auth, handler, parser, model, validator, server, and logger"
+      ]
+    }
+  ]
+}
